@@ -7,7 +7,7 @@ import { createPinia } from 'pinia'
 import SolanaWallets from 'solana-wallets-vue';
 import 'solana-wallets-vue/styles.css';
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base"
-import { SolanaMobileWalletAdapter, createDefaultAuthorizationResultCache } from "@solana-mobile/wallet-adapter-mobile"
+import { SolanaMobileWalletAdapter, createDefaultAuthorizationResultCache, createDefaultWalletNotFoundHandler, createDefaultAddressSelector } from "@solana-mobile/wallet-adapter-mobile"
 import {
   PhantomWalletAdapter,
   SlopeWalletAdapter,
@@ -17,12 +17,15 @@ import {
 const walletOptions = {
   wallets: [
     new SolanaMobileWalletAdapter({
+      addressSelector: createDefaultAddressSelector(),
       appIdentity: {
           name: 'SolPredict',
           icon: './assets/logo.svg',
           uri: window.location.href,
       },
       authorizationResultCache: createDefaultAuthorizationResultCache(),
+      cluster: WalletAdapterNetwork.Devnet,
+      onWalletNotFound: createDefaultWalletNotFoundHandler(),
     }),
     new PhantomWalletAdapter(),
     new SlopeWalletAdapter(),

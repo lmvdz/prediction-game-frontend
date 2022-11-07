@@ -1,8 +1,14 @@
 <script setup lang="ts">
+    import { ref, watchEffect } from 'vue';
+
     const props = defineProps({
         icon: String
     })
-    let url = new URL(`../assets/crypto-icons/${props.icon}.svg`, import.meta.url).href;
+    const url = ref()
+    watchEffect(async () => {
+        url.value = (await import(`../assets/crypto-icons/${props.icon}.svg`)).default
+    })
+    // let url = new URL(`../assets/crypto-icons/${props.icon}.svg`, import.meta.url).href;
 </script>
 
 <template>

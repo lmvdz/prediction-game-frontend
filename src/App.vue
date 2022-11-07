@@ -5,7 +5,6 @@ import GithubLink from './components/GithubLink.vue'
 import DiscordLink from './components/DiscordLink.vue'
 import { WalletMultiButton, useWallet } from 'solana-wallets-vue'
 import { useDisplay } from 'vuetify'
-const wallet = useWallet();
 
 </script>
 
