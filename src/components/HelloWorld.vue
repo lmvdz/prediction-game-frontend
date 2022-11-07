@@ -2073,7 +2073,7 @@ export default defineComponent({
                         </tr>
                         <tr v-for="(prediction, predictionIndex) in computedUserPredictions.filter(prediction => prediction !== undefined && prediction !== null && !prediction.account.settled)" :key="'prediction-'+predictionIndex">
                           <td>
-                            {{ computedGames.find(g => g.account.address.toBase58() === prediction.account.game.toBase58()).account.baseSymbol  }}
+                            {{ computedGames.find(g => g.account.address.toBase58() === prediction.account.game.toBase58()).baseSymbolAsString()  }}
                           </td>
                           <td>
                             {{ UpOrDown[prediction.account.upOrDown] }}
